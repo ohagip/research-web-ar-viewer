@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<title>Web AR Viewer</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+  body {
+    margin: 0;
+  }
+
+  .wrap {
+    box-sizing: border-box;
+    margin: 0 auto;
+    padding: 60px 20px 40px;
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+  }
+
+  .ar {}
+
+  .ar + .ar {
+    margin-top: 80px;
+  }
+
+  .ar_title {
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  .ar_view {
+    position: relative;
+    padding-top: 100%;
+    width: 100%;
+  }
+
+  .ar_view + .ar_attention {
+    margin-top: 80px;
+  }
+
+  .ar_view > * {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    outline: none;
+  }
+
+  .ar_view > a > img {
+    width: 100%;
+    height: auto;
+  }
+
+  .ar_attention {
+    margin-top: 40px;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="ar">
+    <p class="ar_title">ARCore Scene Viewer</p>
+    <p class="ar_attention">iOS非対応</p>
+    <div class="ar_view">
+      <model-viewer ar camera-controls
+                    src="./assets/models/Astronaut.gltf"
+                    background-color="#455A64"
+      ></model-viewer>
+    </div>
+    <p class="ar_attention">iOS対応</p>
+    <div class="ar_view">
+      <model-viewer ar camera-controls
+                    src="./assets/models/Astronaut.gltf"
+                    ios-src="./assets/models/Astronaut.usdz"
+                    background-color="#455A64"
+      ></model-viewer>
+    </div>
+  </div>
+
+  <div class="ar">
+    <p class="ar_title">AR Quick Look</p>
+    <div class="ar_view">
+      <a rel="ar" href="./assets/models/Astronaut.usdz">
+        <img src="./assets/astronaut.png">
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- Loads <model-viewer> for modern browsers: -->
+<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.js"></script>
+<!-- Loads <model-viewer> for old browsers like IE11: -->
+<script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js">
+</script>
+</body>
+</html>
